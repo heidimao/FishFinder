@@ -10,15 +10,23 @@ exports.home =function(req, res){
 
 };
 
+
 exports.find= function(req, res){
 	var fishlist= fishlistJSON.fishes;
 	
 	var fish_name= req.body.fish_name;
-	if(fish_name == fishlist.name){
-		res.send("sucess")
-	}else{
-		res.send("fail")
-	}
+	
+	
+	
+	for (var i =0; i< fishlist.length; i++){
+		if (fishlist[i].name == fish_name){
+			res.send(fishlist[i].desc);
+			
+		};
+	};
+	
+
+	
 
 	
 	
