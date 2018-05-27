@@ -6,6 +6,8 @@ exports.home =function(req, res){
 	res.render('home',{
 		title: 'Find Fish',
 		fish: fishlist
+		
+
 	});
 
 };
@@ -35,15 +37,24 @@ exports.find= function(req, res){
 			var Image= fishlist[j].image;
 			var Des = fishlist[j].desc;
 			var Price= fishlist[j].price;
+			
+
 			res.render('fishFound', {
-				name: Name,
 				status: Status,
 				image: Image,
 				desc: Des,
 				price: Price,
+				fishname: Name
+				
 			});
 	}else{
-		res.render('fishNotFound');
+		
+		
+		res.render('home', {
+			
+			title: 'OOPS! ' + fish_name + ' is not in fish finder!',
+			fish: fishlist
+		});
 	};	
 	
 	
@@ -52,10 +63,9 @@ exports.find= function(req, res){
 };
 
 exports.fishFound= function(req, res){
-	res.render('fishFound')
+	res.render('fishFound');
+
 };
 
-exports.fishNotFound = function(req,res){
-	res.render('fishNotFound')
-};
+
 

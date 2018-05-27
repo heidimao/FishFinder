@@ -2,16 +2,29 @@
 <html>
 <head>
 	<title><%= title %></title>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css">
+
+
 </head>
 
 <body>
 
 	<h1><%= title %></h1>
-	<form action ="" method = "post">
-         Fish Name: <input type = "text" id="fish_name" name ="fish_name">
+	<form class="ui action left icon input" action ="" method = "post">
+         <input type = "text" id="fish_name" name ="fish_name" placeholder="Enter Fish Name">
+         <input type = "submit" value = "Search">
         
-         <input type = "submit" value = "Submit">
     </form>
-    
+     <ul id="UL">
+       	 	<% for (var i=0; i< fish.length; i++){ %>
+    			<li>
+    			<img src= <%=fish[i].image%>>
+    			<%= fish[i].name %>
+
+    			</li>
+   			<% } %>
+   	</ul>
+
+
 </body>
 </html>

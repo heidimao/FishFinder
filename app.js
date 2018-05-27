@@ -13,9 +13,9 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 
 app.get('/', routes.home);
-app.get('/fishFound', routes.fishFound);
+app.get('/fishFound', urlencodedParser, routes.fishFound);
 app.post('/', urlencodedParser, routes.find);
-app.get('/fishNotFound', routes.fishNotFound);
+
 
 
 
