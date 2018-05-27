@@ -14,31 +14,37 @@ exports.home =function(req, res){
 exports.find= function(req, res){
 	var fishlist= fishlistJSON.fishes;
 	var fish_name= req.body.fish_name;
-	String.prototype.capitalize = function() {
-    return this.charAt(0).toUpperCase() + this.slice(1);
-};
-	var Adjusted= fish_name.capitalize()
+	var Name =[];
+	
+	//Make fishname (in json) uppercase, and make user input uppercase, in order to get the result in any case
+	for (i =0 ; i<fishlist.length; i++){
+		Name.push(fishlist[i].name);
+	}
+	
+	var InputUpper= fish_name.toUpperCase();
+	var Adjusted= Name.map(function(x){return x.toUpperCase()});
+	//search 
+	function findingindex(element){
+		return element === InputUpper;
+	};
 
-	for (var i=0; i<fishlist.length; i++){
-		
-		if(Adjusted===fishlist[i].name){
-			console.log(Adjusted);
-			var Name = fishlist[i].name;
-			var Status = fishlist[i].status;
-			var Image= fishlist[i].image;
-			var Des = fishlist[i].desc;
-			var Price= fishlist[i].price;
+	var j = Adjusted.findIndex(findingindex);
+	if (j > -1){
+			var Name = fishlist[j].name;
+			var Status = fishlist[j].status;
+			var Image= fishlist[j].image;
+			var Des = fishlist[j].desc;
+			var Price= fishlist[j].price;
 			res.render('fishFound', {
 				name: Name,
 				status: Status,
 				image: Image,
 				desc: Des,
 				price: Price,
-
 			});
-		};
-
-	};
+	}else{
+		res.render('fishNotFound');
+	};	
 	
 	
 	

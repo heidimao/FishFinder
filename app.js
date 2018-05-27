@@ -14,10 +14,11 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 app.get('/', routes.home);
 app.get('/fishFound', routes.fishFound);
+app.post('/', urlencodedParser, routes.find);
 app.get('/fishNotFound', routes.fishNotFound);
 
 
-app.post('/',urlencodedParser, routes.find);
+
 
 
 app.listen(3000, function(){
