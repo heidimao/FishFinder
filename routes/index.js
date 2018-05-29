@@ -2,7 +2,7 @@ var fishlistJSON= require('../fishes.json');
 
 //routes
 exports.home =function(req, res){
-	var fishlist= fishlistJSON.fishes;
+	const fishlist= fishlistJSON.fishes;
 	res.render('home',{
 		title: 'Find Fish',
 		fish: fishlist
@@ -14,57 +14,45 @@ exports.home =function(req, res){
 
 
 exports.find= function(req, res){
-	var fishlist= fishlistJSON.fishes;
-	var fish_name= req.body.fish_name;
-	var Name =[];
+	const fishname= req.body.fish_name;
 	
-	//Make fishname (in json) uppercase, and make user input uppercase, in order to get the result in any case
-	for (i =0 ; i<fishlist.length; i++){
-		Name.push(fishlist[i].name);
-	}
-	
-	var InputUpper= fish_name.toUpperCase();
-	var Adjusted= Name.map(function(x){return x.toUpperCase()});
-	//search 
-	function findingindex(element){
-		return element === InputUpper;
-	};
-
-	var j = Adjusted.findIndex(findingindex);
-	if (j > -1){
-			var Name = fishlist[j].name;
-			var Status = fishlist[j].status;
-			var Image= fishlist[j].image;
-			var Des = fishlist[j].desc;
-			var Price= fishlist[j].price;
-			
-
-			res.render('fishFound', {
-				status: Status,
-				image: Image,
-				desc: Des,
-				price: Price,
-				fishname: Name
-				
-			});
-	}else{
-		
-		
-		res.render('home', {
-			
-			title: 'OOPS! ' + fish_name + ' is not in fish finder!',
-			fish: fishlist
-		});
-	};	
+	res.redirect('/fishFound/' + fishname);
 	
 	
 	
 
+	
+	
 };
 
 exports.fishFound= function(req, res){
-	res.render('fishFound');
+	const fishlist = fishlistJSON.fishes;
+	const fishname= req.params.fishname;
+	
+	var Input = fishname.toLowerCase();
+	
+	const found_fishes = fishlist.filter(fish => fish.name.toLowerCase().includes(Input));
+	
+	
+	if (found_fishes.length > 0){
+		for (var i =0; i< found_fishes.length; i++){
+			res.render('fishFound',{
+			fish: found_fishes,
+			
+			});
+		};
+		
+	
+	}else{
+		res.render('home',{
+			title: 'Oops! ' + fishname + ' is not found',
+			fish: fishlist
+		});
 
+	};
+	
+
+	
 };
 
 

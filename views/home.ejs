@@ -10,7 +10,7 @@
 <body>
 
 	<h1><%= title %></h1>
-	<form class="ui action left icon input" action ="" method = "post">
+	<form class="ui action left icon input" action ="/fishFound" method = "post">
          <input type = "text" id="fish_name" name ="fish_name" placeholder="Enter Fish Name">
          <input type = "submit" value = "Search">
         
@@ -18,7 +18,9 @@
      <ul id="UL">
        	 	<% for (var i=0; i< fish.length; i++){ %>
     			<li>
-    			<img src= <%=fish[i].image%>>
+    			<a href="/fishFound/<%= fish[i].name%>">
+    				<img src= <%=fish[i].image%>>
+    			</a>
     			<%= fish[i].name %>
 
     			</li>
