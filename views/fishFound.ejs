@@ -14,14 +14,15 @@
             <div class="ui fluid image">
               <img src= <%=fish[i].image%>>
             </div>
-            <div class="content">
+            <div class="content" id="foundfish_content">
               <div class="header"><%= fish[i].name %></div>
-              <div class="description" style="padding: 10px;">
+              <div class="description">
                 <p>Information: <%= fish[i].desc%></p>
-                <p>Price: <%= fish[i].price%></p>
+                <h5><i class="euro sign icon"></i>Price: <%= fish[i].price%></h5>
               </div>
     			  </div> 
             <div class="extra content"> 
+              
               <h5>Status: <%= fish[i].status %><h5>
             </div>
             
