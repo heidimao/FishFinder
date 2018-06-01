@@ -1,21 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <% include partials/head.ejs %>
 	<title></title>
 </head>
 <body>
+<% include partials/header.ejs%>
+<div class="ui stackable one column center aligned grid" id="linkcards">  
 	
-	<ul id="UL">
-       	 	<% for (var i=0; i< fish.length; i++){ %>
-    			<li>
-    			<img src= <%=fish[i].image%>>
-    			<h3><%= fish[i].name %></h3>
-    			<h4>Information: <%= fish[i].desc%></h4>
-    			<h4>Price: <%= fish[i].price%></h4>
-    			<h4>Status: <%= fish[i].status %></ul><h4>
-    			</li>
+    <div class="ui link cards">  
+       	<% for (var i=0; i< fish.length; i++){ %>
+    			<div class="card">
+            <div class="ui fluid image">
+              <img src= <%=fish[i].image%>>
+            </div>
+            <div class="content">
+              <div class="header"><%= fish[i].name %></div>
+              <div class="description" style="padding: 10px;">
+                <p>Information: <%= fish[i].desc%></p>
+                <p>Price: <%= fish[i].price%></p>
+              </div>
+    			  </div> 
+            <div class="extra content"> 
+              <h5>Status: <%= fish[i].status %><h5>
+            </div>
+            
+          </div>
    			<% } %>
-   	</ul>
-	
+   	</div>
+  <div class="column sixteen wide">
+    <div class="ui divider"></div>
+  </div>
+  <div class="column sixteen wide">
+    <button class="ui icon button" onclick="goback()">
+      
+      <i class="arrow left icon"></i>
+      Back
+    </button>
+  </div>
+</div>
+<% include partials/footer.ejs%>
+<script type="text/javascript">
+function goback(){
+  window.history.back();
+}
+</script>
+
 </body>
 </html>

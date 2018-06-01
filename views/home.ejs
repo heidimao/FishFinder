@@ -10,10 +10,12 @@
 </head>
 
 <body>
+<% include partials/header.ejs%>
 <div class="ui grid container">
-	<div class="four wide centered column">
+	<div class="four wide centered column" id="headings">
 		
 		<h1 class="ui center aligned header"><%= title %></h1>
+    <h3 class="ui center aligned header"><%=text %></h3>
 	</div>
 </div>
 
@@ -21,7 +23,7 @@
 	<div class="column ten wide">		
 			
 				
-				<form class="ui form" action ="/fishFound" method = "post">
+				<form id="search" class="ui form" action ="/fishFound" method = "post">
         	 		<div class="ui icon input">
         	 			<input class="prompt" type = "text" id="fish_name" name ="fish_name" placeholder="Enter Fish Name...">
         	 			<i class="search icon"></i>
@@ -40,16 +42,16 @@
     	<div class="ui link cards">	
        					
        		<% for (var i=0; i< fish.length; i++){ %>
-    			<div class="card">
-    				<div class="ui fluid image">
-    					<img src= <%=fish[i].image%>>	
+    			<div class="card" id="home_cards">
+    				<div class="ui fluid image" id="cardimg">
+    					<img style="" src= <%=fish[i].image%>>	
     				</div>
     				<div class="content">		
     					<div class="header"><%= fish[i].name %></div>
     								
     				</div>	
 
-    				<div class="ui bottom attached button">
+    				<div id="card_btn" class="ui bottom attached button">
     					<a href="/fishFound/<%= fish[i].name%>">
     					Know More	
     					</a>
@@ -62,7 +64,7 @@
 	</div>
 	</div>
 </div>
-
+<% include partials/footer.ejs%>
 <script
   src="https://code.jquery.com/jquery-3.1.1.min.js"
   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="

@@ -5,6 +5,7 @@ exports.home =function(req, res){
 	const fishlist= fishlistJSON.fishes;
 	res.render('home',{
 		title: 'Find Fish',
+		text:"",
 		fish: fishlist
 		
 
@@ -45,7 +46,8 @@ exports.fishFound= function(req, res){
 	
 	}else{
 		res.render('home',{
-			title: 'Oops! ' + fishname + ' is not found',
+			title:"Find Fish",
+			text: 'Oops! ' + fishname + ' is not found',
 			fish: fishlist
 		});
 

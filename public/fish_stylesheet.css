@@ -1,0 +1,50 @@
+
+
+#header .ui{
+	height: 30px;
+	border-radius: 0px; 
+	margin-top:0
+	background-color:blue;
+}
+
+#cardimg img{
+	height:120px; 
+	object-fit:cover;
+}
+
+#headings h1{
+	margin-top: 20px;
+}
+
+#search .prompt{
+	width: 50vw;
+
+}
+
+#card_btn{
+	background-color: white;
+	font-size: 10px;
+	font-weight: 200;
+	text-decoration: none;
+
+
+}
+
+/*fishfound*/
+#linkcards .cards{
+	margin-top: 10vh;
+}
+#foot {
+	margin-top: 10vh;
+	border-radius: 0;
+	margin-bottom:0;
+	
+
+}
+#foot h5{
+	font-weight: 200;
+	color:white;
+	font-size: 10px;
+	margin-top: 10px;
+
+}
